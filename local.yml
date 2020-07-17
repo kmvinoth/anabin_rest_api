@@ -3,6 +3,7 @@ version: '3'
 volumes:
   local_postgres_data: {}
   local_postgres_data_backups: {}
+  pgadmin:
 
 services:
   django: &django
@@ -34,51 +35,61 @@ services:
     env_file:
       - ./.envs/.local/.postgres
 
-  docs:
-    image: anabin_rest_api_local_docs
-    container_name: docs
-    build:
-      context: .
-      dockerfile: ./compose/local/docs/Dockerfile
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
     env_file:
-      - ./.envs/.local/.django
+      - ./.envs/.local/.pgadmin
     volumes:
-      - ./docs:/docs
-      - ./config:/app/config
-      - ./anabin_rest_api:/app/anabin_rest_api
+       - pgadmin:/root/.pgadmin
     ports:
-      - "7000:7000"
+      - "5050:80"
 
-  redis:
-    image: redis:5.0
-    container_name: redis
+  # docs:
+  #   image: anabin_rest_api_local_docs
+  #   container_name: docs
+  #   build:
+  #     context: .
+  #     dockerfile: ./compose/local/docs/Dockerfile
+  #   env_file:
+  #     - ./.envs/.local/.django
+  #   volumes:
+  #     - ./docs:/docs
+  #     - ./config:/app/config
+  #     - ./anabin_rest_api:/app/anabin_rest_api
+  #   ports:
+  #     - "7000:7000"
 
-  celeryworker:
-    <<: *django
-    image: anabin_rest_api_local_celeryworker
-    container_name: celeryworker
-    depends_on:
-      - redis
-      - postgres
+  # redis:
+  #   image: redis:5.0
+  #   container_name: redis
+
+  # celeryworker:
+  #   <<: *django
+  #   image: anabin_rest_api_local_celeryworker
+  #   container_name: celeryworker
+  #   depends_on:
+  #     - redis
+  #     - postgres
       
-    ports: []
-    command: /start-celeryworker
+  #   ports: []
+  #   command: /start-celeryworker
 
-  celerybeat:
-    <<: *django
-    image: anabin_rest_api_local_celerybeat
-    container_name: celerybeat
-    depends_on:
-      - redis
-      - postgres
+  # celerybeat:
+  #   <<: *django
+  #   image: anabin_rest_api_local_celerybeat
+  #   container_name: celerybeat
+  #   depends_on:
+  #     - redis
+  #     - postgres
       
-    ports: []
-    command: /start-celerybeat
+  #   ports: []
+  #   command: /start-celerybeat
 
-  flower:
-    <<: *django
-    image: anabin_rest_api_local_flower
-    container_name: flower
-    ports:
-      - "5555:5555"
-    command: /start-flower
+  # flower:
+  #   <<: *django
+  #   image: anabin_rest_api_local_flower
+  #   container_name: flower
+  #   ports:
+  #     - "5555:5555"
+  #   command: /start-flower
