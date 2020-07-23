@@ -25,7 +25,7 @@ class InstitutionsView(generics.ListAPIView):
 
         Search, filter(by country and status), limit and ordering
 
-        GET anabin/institutions?search='institution_name'&country='country_name',&status='status'&limit=20&ordering=id
+        GET anabin/institutions?search='institution_name'&country='country_name',&status='status'&limit=20&ordering=['institution_type', 'status', 'id', 'city_or_place']
 
     """
 
