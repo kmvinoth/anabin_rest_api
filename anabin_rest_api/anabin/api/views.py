@@ -1,18 +1,20 @@
 from django.shortcuts import render
-from rest_framework import generics
-from rest_framework.response import Response
-from anabin.models import Institutions
-from rest_framework import permissions
-from .serializers import InstitutionsSerializer
-from rest_framework import filters
 from django_filters.rest_framework import DjangoFilterBackend
 
-# from django_filters.rest_framework import DjangoFilterBackend
-# from rest_framework import filters
-
+from rest_framework import generics
+from rest_framework.response import Response
+from rest_framework import permissions
+from rest_framework import filters
 from rest_framework.pagination import PageNumberPagination, LimitOffsetPagination
+from rest_framework.viewsets import GenericViewSet
+from rest_framework.mixins import ListModelMixin
+
+from anabin.models import Institutions
+from .serializers import InstitutionsSerializer
+
+
 # Create your views here.
-class InstitutionsView(generics.ListAPIView):
+class InstitutionsViewSet(ListModelMixin, GenericViewSet):
 
     """
         This class gives you institutions from all the countries
