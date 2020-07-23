@@ -1,8 +1,8 @@
 from django.urls import path
 
-from anabin.api.views import InstitutionsView
+from anabin.api.views import InstitutionsViewSet
 
 app_name = "anabin"
 urlpatterns = [
-    path("institutions", view=InstitutionsView.as_view(), name="institutions"),
+    path("institutions", view=InstitutionsViewSet.as_view({'get': 'list'}), name="institutions"),
 ]

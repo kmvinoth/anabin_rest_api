@@ -17,7 +17,7 @@ urlpatterns = [
     path("users/", include("anabin_rest_api.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
     # Your stuff: custom urls includes go here
-    path("anabin/", include("anabin_rest_api.anabin.urls", namespace="anabin")),
+    # path("anabin/", include("anabin_rest_api.anabin.urls", namespace="anabin")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # API URLS
