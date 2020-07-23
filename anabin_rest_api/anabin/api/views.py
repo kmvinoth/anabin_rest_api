@@ -33,7 +33,6 @@ class InstitutionsViewSet(ListModelMixin, GenericViewSet):
 
     serializer_class = InstitutionsSerializer
     queryset = Institutions.objects.exclude(institution='NA')
-    permission_classes = (permissions.AllowAny,)
     filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
     pagination_class = LimitOffsetPagination
     search_fields = ['institution', 'institution_type']
