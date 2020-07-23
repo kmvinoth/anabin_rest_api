@@ -34,16 +34,18 @@ services:
       - local_postgres_data_backups:/backups
     env_file:
       - ./.envs/.local/.postgres
-
-  pgadmin:
-    image: dpage/pgadmin4
-    container_name: pgadmin
-    env_file:
-      - ./.envs/.local/.pgadmin
-    volumes:
-       - pgadmin:/root/.pgadmin
     ports:
-      - "5050:80"
+      - "5432:5432"
+
+  # pgadmin:
+  #   image: dpage/pgadmin4
+  #   container_name: pgadmin
+  #   env_file:
+  #     - ./.envs/.local/.pgadmin
+  #   volumes:
+  #      - pgadmin:/root/.pgadmin
+  #   ports:
+  #     - "5050:80"
 
   # docs:
   #   image: anabin_rest_api_local_docs
