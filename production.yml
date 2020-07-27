@@ -13,7 +13,7 @@ services:
     image: anabin_rest_api_production_django
     depends_on:
       - postgres
-      - redis
+      # - redis
     env_file:
       - ./.envs/.production/.django
       - ./.envs/.production/.postgres
@@ -30,44 +30,44 @@ services:
     env_file:
       - ./.envs/.production/.postgres
 
-  traefik:
-    build:
-      context: .
-      dockerfile: ./compose/production/traefik/Dockerfile
-    image: anabin_rest_api_production_traefik
-    depends_on:
-      - django
-    volumes:
-      - production_traefik:/etc/traefik/acme
-    ports:
-      - "0.0.0.0:80:80"
-      - "0.0.0.0:443:443"
-      - "0.0.0.0:5555:5555"
+  # traefik:
+  #   build:
+  #     context: .
+  #     dockerfile: ./compose/production/traefik/Dockerfile
+  #   image: anabin_rest_api_production_traefik
+  #   depends_on:
+  #     - django
+  #   volumes:
+  #     - production_traefik:/etc/traefik/acme
+  #   ports:
+  #     - "0.0.0.0:80:80"
+  #     - "0.0.0.0:443:443"
+  #     - "0.0.0.0:5555:5555"
 
-  redis:
-    image: redis:5.0
+  # redis:
+  #   image: redis:5.0
 
-  celeryworker:
-    <<: *django
-    image: anabin_rest_api_production_celeryworker
-    command: /start-celeryworker
+  # celeryworker:
+  #   <<: *django
+  #   image: anabin_rest_api_production_celeryworker
+  #   command: /start-celeryworker
 
-  celerybeat:
-    <<: *django
-    image: anabin_rest_api_production_celerybeat
-    command: /start-celerybeat
+  # celerybeat:
+  #   <<: *django
+  #   image: anabin_rest_api_production_celerybeat
+  #   command: /start-celerybeat
 
-  flower:
-    <<: *django
-    image: anabin_rest_api_production_flower
-    command: /start-flower
+  # flower:
+  #   <<: *django
+  #   image: anabin_rest_api_production_flower
+  #   command: /start-flower
 
   
-  awscli:
-    build:
-      context: .
-      dockerfile: ./compose/production/aws/Dockerfile
-    env_file:
-      - ./.envs/.production/.django
-    volumes:
-      - production_postgres_data_backups:/backups
+  # awscli:
+  #   build:
+  #     context: .
+  #     dockerfile: ./compose/production/aws/Dockerfile
+  #   env_file:
+  #     - ./.envs/.production/.django
+  #   volumes:
+  #     - production_postgres_data_backups:/backups
