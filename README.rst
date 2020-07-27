@@ -43,7 +43,9 @@ Default
 GET api/anabin/institutions
 
 Query Parameters
+
 ?limit=20
+
 ?ordering=id
 
 Custom
@@ -51,10 +53,16 @@ Custom
 Search, filter(by country and status), limit and ordering
 
 Query Parameters
+
 ?search=['institution_name', 'institution_type']
+
 ?country='country_name' or status='status'
+
 ?limit=50
+
 ?ordering=['institution_type', 'status', 'id', 'city_or_place']
+
+::
 
     $ curl -iL --user username:password localhost/api/anabin/institutions
 
