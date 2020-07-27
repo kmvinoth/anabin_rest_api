@@ -13,7 +13,7 @@ services:
     image: anabin_rest_api_production_django
     depends_on:
       - postgres
-      # - redis
+      - redis
     env_file:
       - ./.envs/.production/.django
       - ./.envs/.production/.postgres
@@ -44,23 +44,23 @@ services:
       - "0.0.0.0:443:443"
       - "0.0.0.0:5555:5555"
 
-  # redis:
-  #   image: redis:5.0
+  redis:
+    image: redis:5.0
 
-  # celeryworker:
-  #   <<: *django
-  #   image: anabin_rest_api_production_celeryworker
-  #   command: /start-celeryworker
+  celeryworker:
+    <<: *django
+    image: anabin_rest_api_production_celeryworker
+    command: /start-celeryworker
 
-  # celerybeat:
-  #   <<: *django
-  #   image: anabin_rest_api_production_celerybeat
-  #   command: /start-celerybeat
+  celerybeat:
+    <<: *django
+    image: anabin_rest_api_production_celerybeat
+    command: /start-celerybeat
 
-  # flower:
-  #   <<: *django
-  #   image: anabin_rest_api_production_flower
-  #   command: /start-flower
+  flower:
+    <<: *django
+    image: anabin_rest_api_production_flower
+    command: /start-flower
 
   
   awscli:
