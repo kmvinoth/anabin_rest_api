@@ -35,7 +35,9 @@ services:
       - ./.envs/.production/.postgres
     
   nginx:
-    build: ./nginx
+    build: 
+      context: .
+      dockerfile: ./compose/production/nginx/Dockerfile
     container_name: nginx
     ports:
       - 80:80
