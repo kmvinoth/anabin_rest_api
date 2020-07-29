@@ -11,6 +11,9 @@ services:
       context: .
       dockerfile: ./compose/production/django/Dockerfile
     image: anabin_rest_api_production_django
+    container_name: django
+    expose:
+      - 8000
     depends_on:
       - postgres
       # - redis
@@ -24,24 +27,37 @@ services:
       context: .
       dockerfile: ./compose/production/postgres/Dockerfile
     image: anabin_rest_api_production_postgres
+    container_name: postgres
     volumes:
       - production_postgres_data:/var/lib/postgresql/data
       - production_postgres_data_backups:/backups
     env_file:
       - ./.envs/.production/.postgres
-
-  traefik:
-    build:
+    
+  nginx:
+    build: 
       context: .
-      dockerfile: ./compose/production/traefik/Dockerfile
-    image: anabin_rest_api_production_traefik
+      dockerfile: ./compose/production/nginx/Dockerfile
+    container_name: nginx
+    ports:
+      - 80:80
     depends_on:
       - django
-    volumes:
-      - production_traefik:/etc/traefik/acme
-    ports:
-      - "0.0.0.0:80:80"
-      - "0.0.0.0:443:443"
+
+    
+
+  # traefik:
+  #   build:
+  #     context: .
+  #     dockerfile: ./compose/production/traefik/Dockerfile
+  #   image: anabin_rest_api_production_traefik
+  #   depends_on:
+  #     - django
+  #   volumes:
+  #     - production_traefik:/etc/traefik/acme
+  #   ports:
+  #     - "0.0.0.0:80:80"
+  #     - "0.0.0.0:443:443"
   #     - "0.0.0.0:5555:5555"
 
   # redis:
