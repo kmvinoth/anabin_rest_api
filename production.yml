@@ -41,17 +41,8 @@ services:
     container_name: nginx
     ports:
       - 80:80
-    volumes:
-      - ./compose/production/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
-      - ./compose/production/nginx/index.html:/usr/share/nginx/html
-    # networks:
-    #    - docker-network
-    # depends_on:
-    #   - django
-
-# networks:
-#   docker-network:
-#     driver: bridge
+    depends_on:
+      - django
 
     
 
