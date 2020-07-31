@@ -132,7 +132,7 @@ ANYMAIL = {
     "MAILGUN_API_KEY": env("MAILGUN_API_KEY"),
     "MAILGUN_API_URL": env("MAILGUN_API_URL"),
     "MAILGUN_SENDER_DOMAIN": env("MAILGUN_SENDER_DOMAIN"),
-    "DEBUG_API_REQUESTS": True
+    # "DEBUG_API_REQUESTS": True
     }
 # Collectfast
 # ------------------------------------------------------------------------------
