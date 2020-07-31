@@ -128,10 +128,11 @@ INSTALLED_APPS += ["anymail"]  # noqa F405
 # https://anymail.readthedocs.io/en/stable/installation/#anymail-settings-reference
 # https://anymail.readthedocs.io/en/stable/esps/amazon_ses/
 EMAIL_BACKEND = "anymail.backends.mailgun.EmailBackend"
-ANYMAIL = { 
-    MAILGUN_API_KEY = env("MAILGUN_API_KEY"), 
-    MAILGUN_API_URL = env("MAILGUN_API_URL"), 
-    MAILGUN_SENDER_DOMAIN = env("MAILGUN_SENDER_DOMAIN")}
+ANYMAIL = {
+    "MAILGUN_API_KEY": env("MAILGUN_API_KEY"),
+    "MAILGUN_API_URL": env("MAILGUN_API_URL"),
+    "MAILGUN_SENDER_DOMAIN": env("MAILGUN_SENDER_DOMAIN")
+    }
 # Collectfast
 # ------------------------------------------------------------------------------
 # https://github.com/antonagestam/collectfast#installation
