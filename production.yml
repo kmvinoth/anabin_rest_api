@@ -14,25 +14,25 @@ services:
     container_name: django
     expose:
       - 8000
-    depends_on:
-      - postgres
-      # - redis
+    # depends_on:
+    #   - postgres
+    #   # - redis
     env_file:
       - ./.envs/.production/.django
       - ./.envs/.production/.postgres
     command: /start
 
-  postgres:
-    build:
-      context: .
-      dockerfile: ./compose/production/postgres/Dockerfile
-    image: anabin_rest_api_production_postgres
-    container_name: postgres
-    volumes:
-      - production_postgres_data:/var/lib/postgresql/data
-      - production_postgres_data_backups:/backups
-    env_file:
-      - ./.envs/.production/.postgres
+  # postgres:
+  #   build:
+  #     context: .
+  #     dockerfile: ./compose/production/postgres/Dockerfile
+  #   image: anabin_rest_api_production_postgres
+  #   container_name: postgres
+  #   volumes:
+  #     - production_postgres_data:/var/lib/postgresql/data
+  #     - production_postgres_data_backups:/backups
+  #   env_file:
+  #     - ./.envs/.production/.postgres
     
   nginx:
     build: 
