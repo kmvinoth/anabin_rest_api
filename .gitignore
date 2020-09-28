@@ -275,5 +275,5 @@ anabin_rest_api/media/
 
 .ipython/
 .env
-.envs/*
+# .envs/*
 !.envs/.local/

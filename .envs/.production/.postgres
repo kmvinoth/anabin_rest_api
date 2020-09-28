@@ -1,0 +1,7 @@
+# PostgreSQL
+# ------------------------------------------------------------------------------
+POSTGRES_HOST=postgres
+POSTGRES_PORT=5432
+POSTGRES_DB=anabin_rest_api
+POSTGRES_USER=vinoth
+POSTGRES_PASSWORD=zEKcwACQLjtDECC6haN74Qi82WCsehoSxpsc3gbPF3mCFLM17W3RdySLplMwag7D

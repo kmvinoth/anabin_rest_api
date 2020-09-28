@@ -1,0 +1,47 @@
+# General
+# ------------------------------------------------------------------------------
+# DJANGO_READ_DOT_ENV_FILE=True
+DJANGO_SETTINGS_MODULE=config.settings.production
+DJANGO_SECRET_KEY=SGa0gFc94WoSD684UbAwemFZkDOGSWTFAnI031vSAUL9ZbCutq9IgLIR2nJK1KfJ
+DJANGO_ADMIN_URL=F52H2VLsiAAuQy8w40Arf5WZP8XUb8UU/
+DJANGO_ALLOWED_HOSTS=.kmvinoth.org
+
+# Security
+# ------------------------------------------------------------------------------
+# TIP: better off using DNS, however, redirect is OK too
+DJANGO_SECURE_SSL_REDIRECT=False
+
+# Email
+# ------------------------------------------------------------------------------
+DJANGO_SERVER_EMAIL=
+MAILGUN_API_KEY=af491fd56277a618be20e7b43307b558-a65173b1-10b198d1
+MAILGUN_API_URL=https://api.mailgun.net/v3
+MAILGUN_SENDER_DOMAIN=mg.kmvinoth.org
+
+
+# AWS
+# ------------------------------------------------------------------------------
+DJANGO_AWS_ACCESS_KEY_ID=
+DJANGO_AWS_SECRET_ACCESS_KEY=
+DJANGO_AWS_STORAGE_BUCKET_NAME=cookiecutter-anabin
+
+# django-allauth
+# ------------------------------------------------------------------------------
+DJANGO_ACCOUNT_ALLOW_REGISTRATION=True
+
+# Gunicorn
+# ------------------------------------------------------------------------------
+WEB_CONCURRENCY=4
+
+
+# Redis
+# ------------------------------------------------------------------------------
+REDIS_URL=redis://redis:6379/0
+
+# Celery
+# ------------------------------------------------------------------------------
+
+# Flower
+CELERY_FLOWER_USER=QbfwoensioVCZUAUqUkbYSdwjIWzZYxC
+CELERY_FLOWER_PASSWORD=aymxor45EkInuh7kk9vXnC5kiEEiFbxFnKmguGRdWeBgYhzLGA2wQbhlZrd29eA9
+
