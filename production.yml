@@ -12,8 +12,10 @@ services:
       dockerfile: ./compose/production/django/Dockerfile
     image: anabin_rest_api_production_django
     container_name: django
-    expose:
-      - 8000
+    ports:
+      - 8000:8000
+    # expose:
+    #   - 8000
     # depends_on:
     #   - postgres
     #   # - redis
