@@ -38,7 +38,7 @@ services:
     build: 
       context: .
       dockerfile: ./compose/production/nginx/Dockerfile
-    container_name: nginx-prod
+    container_name: nginx
     ports:
       - 80:80
       # - "443:443"
